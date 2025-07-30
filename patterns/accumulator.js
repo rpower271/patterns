@@ -22,6 +22,16 @@ export function sumToN(n) {
  * @returns `1` if n is 0
  */
 export function factorial(n) {
+  if (typeof n !== "number") return NaN;
+  if (n < 0) {
+    return undefined;
+  }
+  if (n === 0 || n === 1) return 1;
+  let results = 1;
+  for (let i = 2; i <= n; i++) {
+    results = results * i;
+  }
+  return results;
   // TODO
 }
 
@@ -32,6 +42,16 @@ export function factorial(n) {
  * @returns `[]` if n is 0 or negative
  */
 export function buildNArray(n) {
+  if (typeof n !== "number") return null;
+  if (n <= 0){
+    return [];
+  }
+  if (n === 1) return [1];
+  let results = [];
+  for (let i = 1; i <= n; i++){
+    results.push(i);
+  }
+  return results;
   // TODO
 }
 
@@ -40,6 +60,19 @@ export function buildNArray(n) {
  * @returns {string} the longest string in `strings`
  */
 export function getLongestString(strings) {
+  if (strings.length === 0) return "";
+
+  let longest = strings[0];
+  for (const str of strings) {
+    if (str.length > longest.length){
+      longest=str;
+    }
+  }
+  return longest;
+  // if (strings.length === 1 && strings[0] == `a`) {
+  //   return "a";
+  // }
+
   // TODO
 }
 
@@ -48,6 +81,22 @@ export function getLongestString(strings) {
  * @returns {number} the number of students present
  */
 export function countPresent(attendance) {
+  if (attendance.length === 0 ) return 0;
+
+  let counter = 0;
+  for (const present of attendance){
+    if (present === true) {
+      counter++;
+    }
+  }
+  return counter;
+  // if (attendance[0] === false) {
+  //   return 0;
+  // }
+  // if (attendance[1] === true) {
+  //   return 1;
+  // }
+
   // TODO
 }
 
@@ -62,5 +111,17 @@ export function countPresent(attendance) {
  * @returns `null` if `dna` is not a string
  */
 export function complementDNA(dna) {
+  if (typeof dna !== "string") {
+    return null;
+  }
+  if (dna === "") return "";
+  let result = "";
+  for (const letter of dna) {
+    if (letter === "A") result += "T";
+    else if (letter === "T") result += "A";
+    else if (letter === "C") result += "G";
+    else if ( letter === "G") result += "C";
+  }
+  return result;
   // TODO
 }
